@@ -22,17 +22,6 @@ const CENTER = [144.963, -37.8136];
 class Map extends Component {
   constructor(props) {
     super(props);
-
-    this.handleMarkerClick = this.handleMarkerClick.bind(this);
-  }
-
-  /**
-   * Click handler for map markers
-   *
-   * @param {Number} itemId - ID of the item that was clicked
-   */
-  handleMarkerClick(itemId) {
-    console.log('>> ', e);
   }
 
   /**
@@ -52,7 +41,7 @@ class Map extends Component {
       >
         <IconLayer
           items={items}
-          handleMarkerClick={this.handleMarkerClick}
+          handleMarkerClick={this.props.onItemSelect}
         />
       </MapBox>
     )

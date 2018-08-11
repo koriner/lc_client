@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './styles.css';
 import Map from '../../components/Map';
-import { loadProperties } from '../../modules/properties/actions';
+import { loadProperties, selectProperty } from '../../modules/properties/actions';
 
 /**
  * MapContainer component
@@ -33,7 +33,7 @@ class MapContainer extends Component {
    * @param {String} itemId - selected property item ID
    */
   onItemSelect(itemId) {
-    // TODO
+    this.props.selectProperty(itemId);
   }
 
   /**
@@ -66,7 +66,8 @@ function mapStateToProps(state) {
 // Map redux actions to prop methods
 function mapDispatchToProps(dispatch) {
   return {
-    loadProperties: () => dispatch(loadProperties())
+    loadProperties: () => dispatch(loadProperties()),
+    selectProperty: (id) => dispatch(selectProperty(id))
   }
 }
 

@@ -9,6 +9,7 @@ import {
   PROPERTIES_LOAD_START,
   PROPERTIES_LOAD_SUCCESS,
   PROPERTIES_LOAD_FAILED,
+  PROPERTIES_SELECT_PROPERTY,
 } from './actions';
 
 // Defines initial state for the properties store, converted to ImmutableJS object
@@ -18,7 +19,8 @@ const INITIAL_STATE = fromJS({
   loadError: false,
   all: [],
   filters: [],
-  filteredPropeties: []
+  filteredPropeties: [],
+  selectedProperty: null
 });
 
 // Properties reducer
@@ -54,6 +56,11 @@ export default function propertiesReducer(state = INITIAL_STATE, { type, payload
         isLoaded: false,
         loadError: payload.error
       });
+    }
+
+    case PROPERTIES_SELECT_PROPERTY: {
+      const property = state.get('all').find(p => p.get('id') === payload.propertyId);
+      return state.set('selectedProperty', property);
     }
 
     default: {

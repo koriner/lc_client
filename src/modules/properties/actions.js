@@ -12,7 +12,7 @@ export const PROPERTIES_LOAD              = 'properties/load';
 export const PROPERTIES_LOAD_START        = 'properties/load_start';
 export const PROPERTIES_LOAD_SUCCESS      = 'properties/load_success';
 export const PROPERTIES_LOAD_FAILED       = 'properties/load_failed';
-
+export const PROPERTIES_SELECT_PROPERTY   = 'properties/select_property';
 
 // Action creators
 
@@ -49,6 +49,15 @@ export const propertiesLoadFailed = (error) => {
     type: PROPERTIES_LOAD_FAILED,
     payload: {
       error
+    }
+  };
+}
+
+export const selectProperty = (propertyId) => {
+  return {
+    type: PROPERTIES_SELECT_PROPERTY,
+    payload: {
+      propertyId
     }
   };
 }
