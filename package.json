@@ -25,6 +25,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "file-loader": "^1.1.11",
     "immutable": "^3.8.2",
     "mapbox-gl": "^0.47.0",
     "promise": "^8.0.1",
