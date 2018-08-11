@@ -5,7 +5,17 @@
 */
 
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styles from './styles.css';
+import MapContainer from '../MapContainer';
+
+const NoMatch = () => (
+  <div>
+    <h3>
+      Page not found!
+    </h3>
+  </div>
+);
 
 /**
  * App component
@@ -13,9 +23,14 @@ import styles from './styles.css';
 class App extends Component {
   render() {
     return (
-      <div className={styles.app}>
-        <h1>Ready</h1>
-      </div>
+      <Router>
+        <div className={styles.app}>
+          <Switch>
+            <Route exact path="/" component={MapContainer} />
+            <Route component={NoMatch} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
