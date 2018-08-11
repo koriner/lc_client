@@ -5,15 +5,11 @@
 */
 
 import { combineReducers } from 'redux-immutable';
-
-const emptyReducer = (state = {}) => {
-  return state;
-}
+import properties from './properties/reducer';
 
 // Creates the main reducer from any included modules.
-// There are no modules yet.
 const rootReducer = combineReducers({
-  emptyReducer
+  properties
 });
 
 export default rootReducer;
