@@ -1,5 +1,6 @@
 // Basic webpack config
 
+const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const htmlPlugin = new HTMLWebpackPlugin({
@@ -9,6 +10,11 @@ const htmlPlugin = new HTMLWebpackPlugin({
 
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/'
+  },
   module: {
     rules: [
       // babel-loader to process JS files
@@ -46,6 +52,9 @@ module.exports = {
         options: {}
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   },
   plugins: [
     htmlPlugin
