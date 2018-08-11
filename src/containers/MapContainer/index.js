@@ -14,6 +14,11 @@ import { loadProperties } from '../../modules/properties/actions';
  * MapContainer component
  */
 class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.onItemSelect = this.onItemSelect.bind(this);
+  }
+
   /**
    * Component mount handler
    */
@@ -22,6 +27,18 @@ class MapContainer extends Component {
     this.props.loadProperties();
   }
 
+  /**
+   * Handler for when a property marker is selected on the map
+   *
+   * @param {String} itemId - selected property item ID
+   */
+  onItemSelect(itemId) {
+    // TODO
+  }
+
+  /**
+   * Main render method
+   */
   render() {
     const { properties } = this.props;
     const isLoading = properties.get('isLoading');
@@ -32,6 +49,7 @@ class MapContainer extends Component {
         <Map
           isLoading={isLoading}
           items={propertyList}
+          onItemSelect={this.onItemSelect}
         />
       </div>
     );
