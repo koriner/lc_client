@@ -1,0 +1,14 @@
+.wrapper {
+  background-color: #fefefe;
+  width: 200px;
+  height: auto;
+  padding: 12px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+}
+
+.title {
+  text-transform: uppercase;
+  font-size: 14px;
+}

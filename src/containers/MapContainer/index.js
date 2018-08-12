@@ -43,12 +43,14 @@ class MapContainer extends Component {
     const { properties } = this.props;
     const isLoading = properties.get('isLoading');
     const propertyList = properties.get('filteredProperties');
+    const selectedProperty = properties.get('selectedProperty');
 
     return (
       <div className={styles.mapContainer}>
         <Map
           isLoading={isLoading}
           items={propertyList}
+          selectedItem={selectedProperty}
           onItemSelect={this.onItemSelect}
         />
       </div>

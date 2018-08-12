@@ -59,6 +59,10 @@ export default function propertiesReducer(state = INITIAL_STATE, { type, payload
     }
 
     case PROPERTIES_SELECT_PROPERTY: {
+      if (!payload.propertyId) {
+        return state.set('selectedProperty', null);
+      }
+
       const property = state.get('all').find(p => p.get('id') === payload.propertyId);
       return state.set('selectedProperty', property);
     }

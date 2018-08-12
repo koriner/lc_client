@@ -17,11 +17,35 @@ const MapBox = ReactMapboxGL({
 });
 
 // Default center position (melbourne)
-const CENTER = [144.963, -37.8136];
+const DEFAULT_CENTER = [144.963, -37.8136];
 
 class Map extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      mapCenter: DEFAULT_CENTER,
+      mapZoom: [10],
+      selectedItemId: ''
+    };
+  }
+
+  /**
+   * Component update handler
+   */
+  componentDidUpdate() {
+    const { selectedItem } = this.props;
+
+    if (selectedItem) {
+      if (this.state.selectedItemId !== selectedItem.get('id')) {
+        this.setState({
+          selectedItemId: selectedItem.get('id'),
+          mapCenter: [selectedItem.get('lon'), selectedItem.get('lat')]
+        });
+      }
+    } else {
+      // TODO...
+    }
   }
 
   /**
@@ -29,6 +53,7 @@ class Map extends Component {
    */
   render() {
     const { items } = this.props;
+    const { mapCenter, mapZoom } = this.state;
 
     return (
       <MapBox
@@ -37,7 +62,8 @@ class Map extends Component {
           width: '100vw',
           height: '100vh'
         }}
-        center={CENTER}
+        center={mapCenter}
+        zoom={mapZoom}
       >
         <IconLayer
           items={items}
@@ -51,6 +77,7 @@ class Map extends Component {
 Map.propTypes = {
   isLoading: PropTypes.bool,
   items: ImtPropTypes.list,
+  selectedItem: ImtPropTypes.map,
   onItemSelect: PropTypes.func.isRequired,
 };
 

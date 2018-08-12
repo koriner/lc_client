@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import styles from './styles.css';
 import MapContainer from '../MapContainer';
+import UIContainer from '../UIContainer';
 
 const NoMatch = () => (
   <div>
@@ -29,6 +30,10 @@ class App extends Component {
             <Route exact path="/" component={MapContainer} />
             <Route component={NoMatch} />
           </Switch>
+          
+          <div className={styles.uiContainer}>
+            <UIContainer />
+          </div>
         </div>
       </Router>
     );
