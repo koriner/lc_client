@@ -11,7 +11,7 @@ A simple demo mapping application showing properties on an interactive map, usin
 - Webpack, Babel
 - MapboxGL
 
-## Running the app
+## Setup
 
 To run the app, first clone the repo.
 
@@ -19,6 +19,13 @@ To run the app, first clone the repo.
 mkdir lc_client && cd lc_client
 git clone https://github.com/koriner/lc_client.git .
 ```
+
+## Mapbox token
+
+You'll need to set a mapbox access token in the config. This can be found in the
+`src/constants/config.js` file.
+
+## Running the app
 
 Install dependencies and run the dev server
 
