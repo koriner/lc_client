@@ -23,7 +23,10 @@ export const loadProperties = () => {
 
     try {
       const res = await propertiesService.loadProperties();
-      dispatch(propertiesLoaded(res));
+      // simple delay to simulate loading
+      setTimeout(() => {
+        dispatch(propertiesLoaded(res));
+      }, 2000);
     } catch(err) {
       dispatch(propertiesLoadFailed(err));
     }

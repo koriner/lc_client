@@ -2,9 +2,10 @@
   position: absolute;
   width: 350px;
   height: 100vh;
-  right: -350px;
+  right: -374px;
   background-color: #fefefe;
   transition: right .25s ease-out;
+  box-shadow: -4px 0px 24px 1px #aaaaaa;
 }
 
 .wrapperVisible {

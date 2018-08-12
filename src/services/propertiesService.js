@@ -7,7 +7,7 @@
 import axios from 'axios';
 import Promise from 'promise';
 
-const API_URL = 'http://localhost:3001'
+const API_URL = 'http://localhost:3001';
 
 /**
  * Loads the properties JSON from a specified URL. The base API_URL

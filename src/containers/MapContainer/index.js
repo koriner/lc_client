@@ -42,17 +42,36 @@ class MapContainer extends Component {
   render() {
     const { properties } = this.props;
     const isLoading = properties.get('isLoading');
+    const isLoaded = properties.get('isLoaded');
+    const loadError = properties.get('loadError');
     const propertyList = properties.get('filteredProperties');
     const selectedProperty = properties.get('selectedProperty');
 
     return (
-      <div className={styles.mapContainer}>
+      <div>
+      <div className={styles.mapContainer + (isLoading ? ' ' + styles.mapLoading : '')}>
         <Map
           isLoading={isLoading}
+          isLoaded={isLoaded}
           items={propertyList}
           selectedItem={selectedProperty}
           onItemSelect={this.onItemSelect}
         />
+      </div>
+      {
+        isLoading && (
+          <div className={styles.loading}>
+            <p>Loading data...</p>
+          </div>
+        )
+      }
+      {
+        loadError && (
+          <div className={styles.error}>
+            <p>There was an error loading property data.</p>
+          </div>
+        )
+      }
       </div>
     );
   }

@@ -18,6 +18,8 @@ const MapBox = ReactMapboxGL({
 
 // Default center position (melbourne)
 const DEFAULT_CENTER = [144.963, -37.8136];
+const ZOOM_OUT_LEVEL = 10;
+const ZOOM_IN_LEVEL = 13;
 
 class Map extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class Map extends Component {
 
     this.state = {
       mapCenter: DEFAULT_CENTER,
-      mapZoom: [10],
+      mapZoom: [ZOOM_OUT_LEVEL],
       selectedItemId: ''
     };
   }
@@ -40,11 +42,17 @@ class Map extends Component {
       if (this.state.selectedItemId !== selectedItem.get('id')) {
         this.setState({
           selectedItemId: selectedItem.get('id'),
-          mapCenter: [selectedItem.get('lon'), selectedItem.get('lat')]
+          mapCenter: [selectedItem.get('lon'), selectedItem.get('lat')],
+          mapZoom: [ZOOM_IN_LEVEL]
         });
       }
     } else {
-      // TODO...
+      if (this.state.selectedItemId !== '') {
+        this.setState({
+          selectedItemId: '',
+          mapZoom: [ZOOM_OUT_LEVEL]
+        });
+      }
     }
   }
 
@@ -52,7 +60,7 @@ class Map extends Component {
    * Main render method
    */
   render() {
-    const { items } = this.props;
+    const { items, isLoading, isLoaded } = this.props;
     const { mapCenter, mapZoom } = this.state;
 
     return (
@@ -65,10 +73,14 @@ class Map extends Component {
         center={mapCenter}
         zoom={mapZoom}
       >
-        <IconLayer
-          items={items}
-          handleMarkerClick={this.props.onItemSelect}
-        />
+      {
+        isLoaded && (
+          <IconLayer
+            items={items}
+            handleMarkerClick={this.props.onItemSelect}
+          />
+        )
+      }
       </MapBox>
     )
   }
@@ -76,6 +88,7 @@ class Map extends Component {
 
 Map.propTypes = {
   isLoading: PropTypes.bool,
+  isLoaded: PropTypes.bool,
   items: ImtPropTypes.list,
   selectedItem: ImtPropTypes.map,
   onItemSelect: PropTypes.func.isRequired,
