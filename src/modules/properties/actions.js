@@ -13,6 +13,7 @@ export const PROPERTIES_LOAD_START        = 'properties/load_start';
 export const PROPERTIES_LOAD_SUCCESS      = 'properties/load_success';
 export const PROPERTIES_LOAD_FAILED       = 'properties/load_failed';
 export const PROPERTIES_SELECT_PROPERTY   = 'properties/select_property';
+export const PROPERTIES_APPLY_FILTERS     = 'properties/apply_filters';
 
 // Action creators
 
@@ -58,6 +59,15 @@ export const selectProperty = (propertyId) => {
     type: PROPERTIES_SELECT_PROPERTY,
     payload: {
       propertyId
+    }
+  };
+}
+
+export const applyFilters = (filters) => {
+  return {
+    type: PROPERTIES_APPLY_FILTERS,
+    payload: {
+      filters
     }
   };
 }

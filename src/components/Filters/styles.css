@@ -1,6 +1,6 @@
 .wrapper {
   background-color: #fefefe;
-  width: 200px;
+  width: 250px;
   height: auto;
   padding: 12px;
   position: absolute;
@@ -11,4 +11,19 @@
 .title {
   text-transform: uppercase;
   font-size: 14px;
+}
+
+.options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.option {
+  margin: 8px 0;
+}
+
+.option > label {
+  text-transform: capitalize;
+  padding-left: 6px;
 }
